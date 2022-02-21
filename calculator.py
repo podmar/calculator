@@ -14,7 +14,9 @@
 #       [] call the right funtion
 # [x] displaying result
 # [] add testing 
-# [] finalise intro text
+# [] finalise intro text, remove test statements from intro
+# [] make the calculator run without closing until a command for closing the programm is given
+# [] add more error and input handling
 
 # Input criteria
 # -> one line / one input
