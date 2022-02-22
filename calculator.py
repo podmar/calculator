@@ -13,9 +13,9 @@
 #       [] write calculation function(s)
 #       [] call the right funtion
 # [x] displaying result
-# [] separate funtions for operations -> decided not to do, would complicate the logic: convert returns 3 arguments that are all needed by calculate
+# [x] create separate funtions for operations -> not sure if that makes sense, the code is not simpler and the advantage for testing might be minor
 # [] add testing 
-# [] finalise intro text, remove test statements from intro
+# [x] finalise intro text, remove test statements from intro
 # [] make the calculator run without closing until a command for closing the programm is given
 # [] add more error and input handling: letters, other input mistakes and handle negative numbers
 
@@ -58,8 +58,6 @@ def calculate(x, y, requested_operation):
     elif requested_operation == "/":
         return divide(x, y)
 
-    # print("%.2f -> first number \n%.2f -> second number \n%s \t-> operation to perform \n----------\nRESULT: %.2f" %(x, y, requested_operation, result))
-
 def add(x, y): 
     result = 0
     result = x + y
@@ -77,7 +75,11 @@ def multiply(x, y):
 
 def divide(x, y): 
     result = 0
-    result = x / y
+    if y == 0: 
+        print("Division by 0.")
+        result = None
+    else: 
+        result = x / y
     return result
 
 def calculator_main():
@@ -98,9 +100,10 @@ def calculator_main():
     
 
 instruction() 
+calculator_main()
 
-while True:
-    calculator_main()
+# while True:
+#     calculator_main()
 
-    if calculator_main() == False:
-        break
+#     if calculator_main() == False:
+#         break
