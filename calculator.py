@@ -13,7 +13,7 @@
 #       [] write calculation function(s)
 #       [] call the right funtion
 # [x] displaying result
-# [] separate funtions for operations
+# [] separate funtions for operations -> decided not to do, would complicate the logic: convert returns 3 arguments that are all needed by calculate
 # [] add testing 
 # [] finalise intro text, remove test statements from intro
 # [] make the calculator run without closing until a command for closing the programm is given
@@ -23,6 +23,11 @@
 # -> one line / one input
 # -> start with 2 numbers 
 # -> 1 operation
+
+def instruction():
+    welcome_message = "Welcome to the calculator. \n----------\nPossible operations: \naddition \t-> + \nsubtraction \t-> - \nmultiplication \t-> * \ndivision \t-> / \n----------\nQUIT: q"
+    print(welcome_message)
+    return
 
 def convert(user_input):
     possible_operations = ["+", "-", "*", "/"]
@@ -40,39 +45,62 @@ def convert(user_input):
             requested_operation = el
             break
 
-    print(x, y, requested_operation)
-
     return x, y, requested_operation
 
-#TO DO: create separate functions for operations -> ease of testing; then add them to calculator main with if conditions
 def calculate(x, y, requested_operation): 
-    result = 0
 
     if requested_operation == "+":
-        result = x + y
+        return add(x, y)
     elif requested_operation == "-":
-        result = x - y
+        return subtract(x, y)
     elif requested_operation == "*":
-        result = x * y
+        return multiply(x, y)
     elif requested_operation == "/":
-        result = x / y
+        return divide(x, y)
 
-    print("%.2f -> first number \n%.2f -> second number \n%s \t-> operation to perform \n----------\nRESULT: %.2f" %(x, y, requested_operation, result))
+    # print("%.2f -> first number \n%.2f -> second number \n%s \t-> operation to perform \n----------\nRESULT: %.2f" %(x, y, requested_operation, result))
+
+def add(x, y): 
+    result = 0
+    result = x + y
+    return result
+
+def subtract(x, y): 
+    result = 0
+    result = x - y
+    return result
+
+def multiply(x, y): 
+    result = 0
+    result = x * y
+    return result
+
+def divide(x, y): 
+    result = 0
+    result = x / y
     return result
 
 def calculator_main():
-    welcome_message = "Welcome to the calculator. \n----------\nPossible operations: \naddition \t-> + \nsubtraction \t-> - \nmultiplication \t-> * \ndivision \t-> / \n----------\nQUIT: q"
-    print(welcome_message)
+
     user_input = input("Calculate:").replace(" ", "")
 
     if user_input == "Q" or user_input == "q":
-        return
+        return False
+
     else: 
 
         try: 
-            calculate(*convert(user_input))
+            result = calculate(*convert(user_input))
+            print("RESULT: %.2f" %(result))
 
         except: 
             print("Cannot calculate, invalid input. Try again.")
+    
 
-calculator_main()
+instruction() 
+
+while True:
+    calculator_main()
+
+    if calculator_main() == False:
+        break
