@@ -94,16 +94,18 @@ def calculator_main():
         try: 
             result = calculate(*convert(user_input))
             print("RESULT: %.2f" %(result))
+            return result
 
         except: 
             print("Cannot calculate, invalid input. Try again.")
+            return
     
 
 instruction() 
 calculator_main()
 
-# while True:
-#     calculator_main()
+while True:
+    calculator_main()
 
-#     if calculator_main() == False:
-#         break
+    if calculator_main() == False:
+        break
