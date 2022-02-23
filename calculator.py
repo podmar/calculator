@@ -24,8 +24,10 @@
 # -> start with 2 numbers 
 # -> 1 operation
 
+import time
+
 def instruction():
-    welcome_message = "Welcome to the calculator. \n----------\nPossible operations: \naddition \t-> + \nsubtraction \t-> - \nmultiplication \t-> * \ndivision \t-> / \n----------\nQUIT: q"
+    welcome_message = "Welcome to the calculator. \n----------\nPossible operations: \naddition \t-> + \nsubtraction \t-> - \nmultiplication \t-> * \ndivision \t-> / \n----------\nQUIT: q\n----------"
     print(welcome_message)
     return
 
@@ -93,19 +95,29 @@ def calculator_main():
 
         try: 
             result = calculate(*convert(user_input))
-            print("RESULT: %.2f" %(result))
+            print("RESULT: %.2f\n----------" %(result))
             return result
 
         except: 
             print("Cannot calculate, invalid input. Try again.")
             return
     
+def bye(): 
+    bye_message = "BYE BYE!"
+    display_message = ""
+
+    for n in range(len(bye_message)+1): 
+        display_message = bye_message[:n]
+        print(display_message, end="\r")
+        time.sleep(.1)
+    print(display_message)
 
 instruction() 
-calculator_main()
 
 while True:
-    calculator_main()
+    output = calculator_main()
 
-    if calculator_main() == False:
+    if output == False:
         break
+
+bye()
