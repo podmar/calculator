@@ -42,10 +42,15 @@ class TestCalculator(unittest.TestCase):
         """
         self.assertIsInstance(convert("52+2"), tuple)
         self.assertEqual(convert("52+2"), (52, 2, "+"))
-        self.assertEqual(convert("5736-12"), (5736, -12, "*"))
+        self.assertEqual(convert("5736*(-12)"), (5736, -12, "*"))
         self.assertEqual(convert("0/2"), (0, 2, "/"))
         self.assertEqual(convert("-5736/3"), (-5736, 3, "/"))
         self.assertEqual(convert("2/0"), (2, 0, "/"))
+
+    # def test_main(self): 
+    #     """Testing if program quits
+    #     """
+    #     self.assertEqual(calculator_main(), second)
 
     # def test_main(self): 
     #     """Testing main calculator funtion
