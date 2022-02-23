@@ -22,6 +22,8 @@
 # [] check if possible to remove letters to fix the input (after or before eval)
 # [] check possibility to rewrite simpler wiht compile /eval funtions only
 
+# if a minus number the calculator is not subtracting (minus sign not checked any more)
+
 # Input criteria
 # -> one line / one input
 # -> start with 2 numbers 
@@ -37,7 +39,7 @@ def instruction():
 def convert(user_input):
     invalid_number_warning = "Please enter numbers."
     operator_warning = "You did not input a valid operator."
-    possible_operations = ["+", "-", "*", "/"]
+    possible_operations = ["+", "*", "/", "-"]
 
     x = 0 
     y = 0
@@ -46,7 +48,25 @@ def convert(user_input):
     for el in possible_operations: 
         operator_index = user_input.find(el)
 
-        if operator_index > -1: 
+        if operator_index == -1: 
+            continue
+
+        elif operator_index > 0: 
+            requested_operation = el
+
+            try: 
+                x = eval(user_input[0:operator_index])
+                y = eval(user_input[operator_index+1:])
+
+            except: 
+                print(invalid_number_warning)
+                x = None
+                y = None
+
+            break
+
+        elif operator_index == 0 and requested_operation == possible_operations[3]: 
+            operator_index = user_input[1:].find(el) + 1
             requested_operation = el
 
             try: 
@@ -66,7 +86,6 @@ def convert(user_input):
     return x, y, requested_operation
 
 def calculate(x, y, requested_operation): 
-
     if requested_operation == "+":
         return add(x, y)
     elif requested_operation == "-":
@@ -101,11 +120,11 @@ def divide(x, y):
     return result
 
 def calculator_main():
-
+    invalid_input_warning = "Cannot calculate, invalid input. Try again."
     user_input = input("Calculate:").replace(" ", "")
 
     if user_input == "Q" or user_input == "q":
-        return False
+        return "quit_flag"
 
     else: 
 
@@ -115,7 +134,7 @@ def calculator_main():
             return result
 
         except: 
-            print("Cannot calculate, invalid input. Try again.")
+            print(invalid_input_warning)
             return
     
 def bye(): 
@@ -133,7 +152,7 @@ instruction()
 while True:
     output = calculator_main()
 
-    if output == False:
+    if output == "quit_flag":
         break
 
 bye()
