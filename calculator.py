@@ -14,9 +14,9 @@
 #       [] call the right funtion
 # [x] displaying result
 # [x] create separate funtions for operations -> not sure if that makes sense, the code is not simpler and the advantage for testing might be minor
-# [] add testing 
+# [x] add testing 
 # [x] finalise intro text, remove test statements from intro
-# [] make the calculator run without closing until a command for closing the programm is given
+# [x] make the calculator run without closing until a command for closing the programm is given
 # [] add more error and input handling: letters, other input mistakes and handle negative numbers
 
 # Input criteria
