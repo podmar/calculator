@@ -17,7 +17,10 @@
 # [x] add testing 
 # [x] finalise intro text, remove test statements from intro
 # [x] make the calculator run without closing until a command for closing the programm is given
-# [] add more error and input handling: letters, other input mistakes and handle negative numbers
+# [x] add more error and input handling: letters, other input mistakes 
+# [] handle negative numbers
+# [] check if possible to remove letters to fix the input (after or before eval)
+# [] check possibility to rewrite simpler wiht compile /eval funtions only
 
 # Input criteria
 # -> one line / one input
@@ -32,6 +35,8 @@ def instruction():
     return
 
 def convert(user_input):
+    invalid_number_warning = "Please enter numbers."
+    operator_warning = "You did not input a valid operator."
     possible_operations = ["+", "-", "*", "/"]
 
     x = 0 
@@ -42,10 +47,21 @@ def convert(user_input):
         operator_index = user_input.find(el)
 
         if operator_index > -1: 
-            x = eval(user_input[0:operator_index])
-            y = eval(user_input[operator_index+1:])
             requested_operation = el
+
+            try: 
+                x = eval(user_input[0:operator_index])
+                y = eval(user_input[operator_index+1:])
+
+            except: 
+                print(invalid_number_warning)
+                x = None
+                y = None
+
             break
+
+    if requested_operation == "": 
+        print(operator_warning)
 
     return x, y, requested_operation
 

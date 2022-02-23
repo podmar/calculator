@@ -30,7 +30,6 @@ class TestCalculator(unittest.TestCase):
     def test_calculate(self): 
         """Testing the funtion that decides which operation to conduct
         """
-
         self.assertEqual(calculate(5, -120, "+"), -115)
         self.assertEqual(calculate(-10, 203, "-"), -213)
         self.assertEqual(calculate(0.1, 5, "*"), 0.5)
