@@ -18,11 +18,9 @@
 # [x] finalise intro text, remove test statements from intro
 # [x] make the calculator run without closing until a command for closing the programm is given
 # [x] add more error and input handling: letters, other input mistakes 
-# [] handle negative numbers
+# [x] handle negative numbers
 # [] check if possible to remove letters to fix the input (after or before eval)
 # [] check possibility to rewrite simpler wiht compile /eval funtions only
-
-# if a minus number the calculator is not subtracting (minus sign not checked any more)
 
 # Input criteria
 # -> one line / one input
@@ -65,20 +63,21 @@ def convert(user_input):
 
             break
 
-        elif operator_index == 0 and requested_operation == possible_operations[3]: 
-            operator_index = user_input[1:].find(el) + 1
+        elif operator_index == 0: 
             requested_operation = el
+            if requested_operation == possible_operations[3]: 
+                operator_index = user_input[1:].find(el) + 1
 
-            try: 
-                x = eval(user_input[0:operator_index])
-                y = eval(user_input[operator_index+1:])
+                try: 
+                    x = eval(user_input[0:operator_index])
+                    y = eval(user_input[operator_index+1:])
 
-            except: 
-                print(invalid_number_warning)
-                x = None
-                y = None
+                except: 
+                    print(invalid_number_warning)
+                    x = None
+                    y = None
 
-            break
+                break
 
     if requested_operation == "": 
         print(operator_warning)
