@@ -72,65 +72,65 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(calculate(-10, -0.5, "/"), 20)
 
     def test_convert_type(self): 
-        """Testing the function converting the user input
+        """Testing the return type of the convert function
         """
-        self.assertIsInstance(convert("52+2"), tuple)
+        self.assertIsInstance(convert("52+2"), list)
 
     def test_convert_negative_numbers(self): 
-        """Testing the function converting the user input with negative numbers
+        """Testing the convert funtion with negative numbers
         """
-        self.assertEqual(convert("5+-120"), (5, -120, "+"))
-        self.assertEqual(convert("5--120"), (5, -120, "-"))
-        self.assertEqual(convert("5*-120"), (5, -120, "*"))
-        self.assertEqual(convert("120/-5"), (120, -5, "/"))
+        self.assertEqual(convert("5+-120"), [5.0, -120.0, "+"])
+        self.assertEqual(convert("5--120"), [5.0, -120.0, "-"])
+        self.assertEqual(convert("5*-120"), [5.0, -120.0, "*"])
+        self.assertEqual(convert("120/-5"), [120.0, -5.0, "/"])
 
-        self.assertEqual(convert("-5+120"), (-5, 120, "+"))
-        self.assertEqual(convert("-5-120"), (-5, 120, "-"))
-        self.assertEqual(convert("-5*120"), (-5, 120, "*"))
-        self.assertEqual(convert("-120/5"), (-120, 5, "/"))
+        self.assertEqual(convert("-5+120"), [-5.0, 120.0, "+"])
+        self.assertEqual(convert("-5-120"), [-5.0, 120.0, "-"])
+        self.assertEqual(convert("-5*120"), [-5.0, 120.0, "*"])
+        self.assertEqual(convert("-120/5"), [-120.0, 5.0, "/"])
 
-        self.assertEqual(convert("-5+-120"), (-5, -120, "+"))
-        self.assertEqual(convert("-10--203"), (-10, -203, "-"))
-        self.assertEqual(convert("-0.1*-5"), (-0.1, -5, "*"))
-        self.assertEqual(convert("-10/-20"), (-10, -20, "/"))
+        self.assertEqual(convert("-5+-120"), [-5.0, -120.0, "+"])
+        self.assertEqual(convert("-10--203"), [-10.0, -203.0, "-"])
+        self.assertEqual(convert("-0.1*-5"), [-0.1, -5.0, "*"])
+        self.assertEqual(convert("-10/-20"), [-10.0, -20.0, "/"])
 
     def test_convert_zero(self): 
-        """Testing the function converting the user input with 0 as input
+        """Testing the convert function with 0 as input
         """
 
-        self.assertEqual(convert("5+0"), (5, 0, "+"))
-        self.assertEqual(convert("5-0"), (5, 0, "-"))
-        self.assertEqual(convert("5*0"), (5, 0, "*"))
-        self.assertEqual(convert("120/0"), (120, 0, "/"))
+        self.assertEqual(convert("5+0"), [5.0, 0.0, "+"])
+        self.assertEqual(convert("5-0"), [5.0, 0.0, "-"])
+        self.assertEqual(convert("5*0"), [5.0, 0.0, "*"])
+        self.assertEqual(convert("120/0"), [120.0, 0.0, "/"])
 
-        self.assertEqual(convert("0+120"), (0, 120, "+"))
-        self.assertEqual(convert("0-120"), (0, 120, "-"))
-        self.assertEqual(convert("0*120"), (0, 120, "*"))
-        self.assertEqual(convert("0/5"), (0, 5, "/"))
+        self.assertEqual(convert("0+120"), [0.0, 120.0, "+"])
+        self.assertEqual(convert("0-120"), [0.0, 120.0, "-"])
+        self.assertEqual(convert("0*120"), [0.0, 120.0, "*"])
+        self.assertEqual(convert("0/5"), [0.0, 5.0, "/"])
 
-        self.assertEqual(convert("0+0"), (0, 0, "+"))
-        self.assertEqual(convert("0-0"), (0, 0, "-"))
-        self.assertEqual(convert("0*0"), (0, 0, "*"))
-        self.assertEqual(convert("0/0"), (0, 0, "/"))
+        self.assertEqual(convert("0+0"), [0.0, 0.0, "+"])
+        self.assertEqual(convert("0-0"), [0.0, 0.0, "-"])
+        self.assertEqual(convert("0*0"), [0.0, 0.0, "*"])
+        self.assertEqual(convert("0/0"), [0.0, 0.0, "/"])
 
     def test_convert_floats(self): 
-        """Testing the function converting the user input with 0 as input
+        """Testing the convert function with floats as input
         """
 
-        self.assertEqual(convert("5+0.5"), (5, 0.5, "+"))
-        self.assertEqual(convert("5-0.5"), (5, 0.5, "-"))
-        self.assertEqual(convert("5*0.5"), (5, 0.5, "*"))
-        self.assertEqual(convert("120/0.5"), (120, 0.5, "/"))
+        self.assertEqual(convert("5+0.5"), [5.0, 0.5, "+"])
+        self.assertEqual(convert("5-0.5"), [5.0, 0.5, "-"])
+        self.assertEqual(convert("5*0.5"), [5.0, 0.5, "*"])
+        self.assertEqual(convert("120/0.5"), [120.0, 0.5, "/"])
 
-        self.assertEqual(convert("0.5+120"), (0.5, 120, "+"))
-        self.assertEqual(convert("0.5-120"), (0.5, 120, "-"))
-        self.assertEqual(convert("0.5*120"), (0.5, 120, "*"))
-        self.assertEqual(convert("0.5/5"), (0.5, 5, "/"))
+        self.assertEqual(convert("0.5+120"), [0.5, 120.0, "+"])
+        self.assertEqual(convert("0.5-120"), [0.5, 120.0, "-"])
+        self.assertEqual(convert("0.5*120"), [0.5, 120.0, "*"])
+        self.assertEqual(convert("0.5/5"), [0.5, 5.0, "/"])
 
-        self.assertEqual(convert("0.5+0.1"), (0.5, 0.1, "+"))
-        self.assertEqual(convert("0.5-0.1"), (0.5, 0.1, "-"))
-        self.assertEqual(convert("0.5*0.1"), (0.5, 0.1, "*"))
-        self.assertEqual(convert("0.5/0.1"), (0.5, 0.1, "/"))
+        self.assertEqual(convert("0.5+0.1"), [0.5, 0.1, "+"])
+        self.assertEqual(convert("0.5-0.1"), [0.5, 0.1, "-"])
+        self.assertEqual(convert("0.5*0.1"), [0.5, 0.1, "*"])
+        self.assertEqual(convert("0.5/0.1"), [0.5, 0.1, "/"])
 
     # def test_main(self): 
     #     """Testing if program quits
