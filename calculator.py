@@ -53,8 +53,8 @@ def convert(user_input):
             requested_operation = el
 
             try: 
-                x = eval(user_input[0:operator_index])
-                y = eval(user_input[operator_index+1:])
+                x = float(user_input[0:operator_index])
+                y = float(user_input[operator_index+1:])
 
             except: 
                 print(invalid_number_warning)
