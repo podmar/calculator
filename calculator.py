@@ -122,7 +122,7 @@ def calculator_main():
     invalid_input_warning = "Cannot calculate, invalid input. Try again."
     user_input = input("Calculate:").replace(" ", "")
 
-    if user_input == "Q" or user_input == "q":
+    if user_input.lower() == "q":
         return "quit_flag"
 
     else: 
