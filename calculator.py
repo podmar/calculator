@@ -126,16 +126,15 @@ def calculator_main():
         return "quit_flag"
 
     else: 
+        result = calculate(*convert(user_input))
 
-        try: 
-            result = calculate(*convert(user_input))
+        if result != None:
             print("RESULT: %.2f\n----------" %(result))
-            return result
-
-        except: 
+        else: 
             print(invalid_input_warning)
-            return
-    
+
+        return result
+
 def bye(): 
     bye_message = "BYE BYE!"
     display_message = ""
