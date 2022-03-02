@@ -85,37 +85,21 @@ def convert(user_input):
     return converted_input
 
 def calculate(x, y, requested_operation): 
+    result = 0
+
     if requested_operation == "+":
-        return add(x, y)
+        result = x + y
     elif requested_operation == "-":
-        return subtract(x, y)
+        result = x - y
     elif requested_operation == "*":
-        return multiply(x, y)
+        result = x * y
     elif requested_operation == "/":
-        return divide(x, y)
+        if y == 0: 
+            print("Division by 0.")
+            result = None
+        else: 
+            result = x / y
 
-def add(x, y): 
-    result = 0
-    result = x + y
-    return result
-
-def subtract(x, y): 
-    result = 0
-    result = x - y
-    return result
-
-def multiply(x, y): 
-    result = 0
-    result = x * y
-    return result
-
-def divide(x, y): 
-    result = 0
-    if y == 0: 
-        print("Division by 0.")
-        result = None
-    else: 
-        result = x / y
     return result
 
 def calculator_main():
