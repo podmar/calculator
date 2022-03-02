@@ -1,19 +1,8 @@
 import unittest
-from calculator import convert, add, subtract, multiply, divide, calculate, calculator_main
+from calculator import convert, calculate, calculator_main
 
 class TestCalculator(unittest.TestCase): 
-    def test_operations(self): 
-        """Testing the operations funtions: add, subtract, multiply & divide.
-        """
-        self.assertEqual(add(3, 9), 12)
-        self.assertEqual(add(-3, 9), 6)
-        self.assertEqual(add(0, 9.5), 9.5)
-        self.assertEqual(subtract(6, 19), -13)
-        self.assertEqual(multiply(3.12, 2), 6.24)
-        self.assertEqual(divide(6.80, 2), 3.4)
-        self.assertEqual(divide(1, 5), 0.2)
-
-
+    
     def test_calculate_negative_numbers(self): 
         """Testing calculate funtion with negative numbers
         """
