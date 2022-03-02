@@ -39,9 +39,21 @@ def convert(user_input):
     operator_warning = "You did not input a valid operator."
     possible_operations = ["+", "*", "/", "-"]
 
-    x = 0 
-    y = 0
     requested_operation = ""
+
+    def extracting_numbers(any_string_input, given_index): 
+        try: 
+            x = float(any_string_input[0:given_index])
+            y = float(any_string_input[given_index+1:])
+            
+        except: 
+            print(invalid_number_warning)
+            x = None
+            y = None
+
+        numbers = [x, y]
+
+        return numbers
 
     for el in possible_operations: 
         operator_index = user_input.find(el)
@@ -52,14 +64,7 @@ def convert(user_input):
         elif operator_index > 0: 
             requested_operation = el
 
-            try: 
-                x = float(user_input[0:operator_index])
-                y = float(user_input[operator_index+1:])
-
-            except: 
-                print(invalid_number_warning)
-                x = None
-                y = None
+            converted_input = extracting_numbers(user_input, operator_index)
 
             break
 
@@ -68,21 +73,16 @@ def convert(user_input):
             if requested_operation == possible_operations[3]: 
                 operator_index = user_input[1:].find(el) + 1
 
-                try: 
-                    x = eval(user_input[0:operator_index])
-                    y = eval(user_input[operator_index+1:])
-
-                except: 
-                    print(invalid_number_warning)
-                    x = None
-                    y = None
+                converted_input = extracting_numbers(user_input, operator_index)
 
                 break
 
     if requested_operation == "": 
         print(operator_warning)
+    
+    converted_input.append(requested_operation)
 
-    return x, y, requested_operation
+    return converted_input
 
 def calculate(x, y, requested_operation): 
     if requested_operation == "+":
